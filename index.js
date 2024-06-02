@@ -1,3 +1,3 @@
-const textbelt = require('./lib/text');
+const readysms = require('./lib/text');
 
-module.exports = textbelt;
+module.exports = readysms;

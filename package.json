@@ -1,8 +1,8 @@
 {
-  "name": "TextBelt",
+  "name": "ReadySms",
   "repository": {
     "type": "git",
-    "url": "git@github.com:typpo/textbelt.git"
+    "url": "git@github.com:readysms/readysms.git"
   },
   "dependencies": {
     "express": "^4.19.2",
