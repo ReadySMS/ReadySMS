@@ -1,25 +1,25 @@
-### TextBelt Open Source
+### ReadySms Open Source
 
-TextBelt Open Source is a REST API that sends outgoing SMS.  It uses a free mechanism for sending texts, different from the more reliable paid version available at https://textbelt.com.
+ReadySms Open Source is a REST API that sends outgoing SMS.  It uses a free mechanism for sending texts, different from the more reliable paid version available at https://readysms.github.io.
 
 This project uses carrier-specific gateways to deliver your text messages for free, and without ads.  The service is fairly reliable when configured on a private server and has sent over 1 million texts.
 
 Send a text with a simple POST request:
 
 ```sh
-$ curl -X POST http://my_textbelt_server/text \
+$ curl -X POST http://my_readysms_server/text \
    -d number=5551234567 \
-   -d "message=I sent this message for free with Textbelt"
+   -d "message=I sent this message for free with Readysms"
 ```
 
 `number` and `message` parameters are required.
 
-If you are using the paid version at https://textbelt.com, run the following (more examples available on the homepage):
+If you are using the paid version at https://readysms.github.io, run the following (more examples available on the homepage):
 
 ```sh
-$ curl -X POST https://textbelt.com/text \
+$ curl -X POST https://readysms.github.io/text \
    -d number=5551234567 \
-   -d "message=I sent this message for free with Textbelt" \
+   -d "message=I sent this message for free with Readysms" \
    -d key=abcdef123456
 ```
 
@@ -30,7 +30,7 @@ Sample success:
 {"success":true}
 ```
 
-Note that success means that the message was sent to Textbelt's list of providers.  We can't guarantee delivery on your network.
+Note that success means that the message was sent to Readysms's list of providers.  We can't guarantee delivery on your network.
 
 Sample failure:
 
@@ -56,7 +56,7 @@ A sample transport with SMTP sending is included.
 For example, to send a text using the default settings:
 
 ```js
-var text = require('textbelt');
+var text = require('readysms');
 
 text.send('9491234567', 'A sample text message!', undefined, function(err) {
   if (err) {
@@ -68,7 +68,7 @@ text.send('9491234567', 'A sample text message!', undefined, function(err) {
 You can also supply a region (valid choices are `us`, `intl`, or `canada`)
 
 ```js
-var text = require('textbelt');
+var text = require('readysms');
 
 // Canada
 text.send('9491234567', 'A sample text message!', 'canada', function(err) {
@@ -83,7 +83,7 @@ text.send('1119491234567', 'Bonjour!', 'intl', function(err) {
 
 ### Usage as a standalone server
 
-Textbelt can be run as a standalone server with: `node server/app.js`.  Be sure to install dependencies first with `npm install` and you've configured nodemailer in `lib/config.js`. This project also relies on redis. To install redis locally, please see the [redis documentation](http://redis.io/topics/quickstart). Before launching the app, ensure redis is running on port 6379 with `redis-server`.
+Readysms can be run as a standalone server with: `node server/app.js`.  Be sure to install dependencies first with `npm install` and you've configured nodemailer in `lib/config.js`. This project also relies on redis. To install redis locally, please see the [redis documentation](http://redis.io/topics/quickstart). Before launching the app, ensure redis is running on port 6379 with `redis-server`.
 
 By default, the server listens on port 9090.
 
@@ -93,33 +93,33 @@ Don't forget to set `fromAddress` in `lib/config.js` to the email address you wa
 
 The /text endpoint supports U.S. phone numbers (and parts of Canada).
 
-For Canadian texts, curl `http://textbelt.com/canada`.
+For Canadian texts, curl `http://readysms.github.io/canada`.
 
-For international texts, curl `http://textbelt.com/intl`.
+For international texts, curl `http://readysms.github.io/intl`.
 
 Canadian and international support may not be complete.  Refer to the list of supported carriers.
 
-### Textbelt Clients
+### Readysms Clients
 
-  * ruby - [djds23/textbelt-gem](https://github.com/djds23/textbelt-gem)
-  * go - [dietsche/textbelt](https://github.com/dietsche/textbelt), [lateralusd/textbelt](https://github.com/lateralusd/textbelt)
-  * python - [ksdme/py-textbelt](https://github.com/ksdme/py-textbelt)
-  * node.js - [minond/textbelt](https://github.com/minond/textbelt), [ajay-gandhi/textbelt](https://github.com/ajay-gandhi/textbelt), [soondobu/mtextbelt](https://github.com/soondobu/mtextbelt)
+  * ruby - [djds23/readysms-gem](https://github.com/djds23/readysms-gem)
+  * go - [dietsche/readysms](https://github.com/dietsche/readysms), [lateralusd/readysms](https://github.com/lateralusd/readysms)
+  * python - [ksdme/py-readysms](https://github.com/ksdme/py-readysms)
+  * node.js - [minond/readysms](https://github.com/minond/readysms), [ajay-gandhi/readysms](https://github.com/ajay-gandhi/readysms), [soondobu/mreadysms](https://github.com/soondobu/mreadysms)
   * php - [ctrlaltdylan/courier](https://github.com/ctrlaltdylan/courier), [securingsincity/phpsms](https://github.com/securingsincity/phpsms)
   * bash - [cfalk/MessageMe](https://github.com/cfalk/MessageMe)
-  * html/js/mobile webpage - [mLuby/SMS](https://github.com/mLuby/smsHR), [daluu/textbelt-clients](https://github.com/daluu/textbelt-clients)
-  * Browser extension - [Chrome](https://chrome.google.com/webstore/detail/textbelter/clciehobfheendclpnmbgbalelignpoa), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/textbelter/), [Safari](https://github.com/daluu/textbelt-clients/raw/master/textbelter.safariextz), [Opera](https://addons.opera.com/en/extensions/details/textbelter/?display=en)
-  * Windows Phone - [TextBelter](https://www.microsoft.com/en-us/store/apps/textbelter/9nblggh1z2dg)
+  * html/js/mobile webpage - [mLuby/SMS](https://github.com/mLuby/smsHR), [daluu/readysms-clients](https://github.com/daluu/readysms-clients)
+  * Browser extension - [Chrome](https://chrome.google.com/webstore/detail/readysmser/clciehobfheendclpnmbgbalelignpoa), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/readysmser/), [Safari](https://github.com/daluu/readysms-clients/raw/master/readysmser.safariextz), [Opera](https://addons.opera.com/en/extensions/details/readysmser/?display=en)
+  * Windows Phone - [ReadySmser](https://www.microsoft.com/en-us/store/apps/readysmser/9nblggh1z2dg)
   * [SendSMS Mac App](https://itunes.apple.com/app/sendsms/id584131262?mt=12)
-  * [OSX dashboard widget](https://github.com/daluu/textbelt-clients/releases/download/1.0/TextBelter.wdgt.zip)
-  * [Windows 7/Vista gadget](https://github.com/daluu/textbelt-clients/releases/download/1.0/textbelter.gadget.zip)
+  * [OSX dashboard widget](https://github.com/daluu/readysms-clients/releases/download/1.0/ReadySmser.wdgt.zip)
+  * [Windows 7/Vista gadget](https://github.com/daluu/readysms-clients/releases/download/1.0/readysmser.gadget.zip)
 
 
 ### Notes and Limitations
 
- * Some carriers are picky about which messages they deliver. A "success" response from Textbelt means that your message was given to the carrier.
+ * Some carriers are picky about which messages they deliver. A "success" response from Readysms means that your message was given to the carrier.
 
- *  Some carriers may deliver text messages from "txt@textbelt.com", "foo@bar.com", or whatever you have configured as `fromAddress` in `lib/config.js`.
+ *  Some carriers may deliver text messages from "txt@readysms.github.io", "foo@bar.com", or whatever you have configured as `fromAddress` in `lib/config.js`.
 
  *  Supported U.S. carriers: Alltel, Ameritech, AT&T Wireless, Boost, CellularOne, Cingular, Edge Wireless, Nex-Tech Wireless, Project Fi, Sprint PCS, Telus Mobility, T-Mobile, Metro PCS, Nextel, O2, Orange, Qwest, Rogers Wireless, Ting, US Cellular, Verizon, Virgin Mobile.
 
@@ -129,7 +129,7 @@ Canadian and international support may not be complete.  Refer to the list of su
 
 ### License (MIT)
 
-TextBelt
+ReadySms
 Copyright (C) 2018 by Ian Webster
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
